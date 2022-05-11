@@ -5,14 +5,16 @@ from publication_app.forms.registration import RegistrationForm
 
 
 class RegistrationView(View):
-    def get(self, request):
+    @staticmethod
+    def get(request):
         form = RegistrationForm()
         context = {
             'reg_form': form,
         }
         return render(request, 'registration_page.html', context)
 
-    def post(self, request):
+    @staticmethod
+    def post(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
