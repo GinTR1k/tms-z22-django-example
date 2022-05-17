@@ -1,3 +1,4 @@
+{% load menu_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,12 +6,17 @@
     <title>{{ title }}</title>
 </head>
 <body>
-    {% if user.is_authenticated %}<div>You signed in as {{ user.username }}</div>{% endif %}
+<div id="main_menu">{% main_menu %}</div>
+<div id="user_menu">{% user_menu %}</div>
 
-    {% for post in posts %}
-        <h3>{{ post.title }}</h3>
-        {% if post.image %}<div><img src="{{ post.image.url }}" alt="" width="350px" height="350px"></div>{% endif %}
-        <div>{{ post.text }}</div>
-    {% endfor %}
+{% for post in posts %}
+    <h3>{{ post.title }}</h3>
+
+    {% if post.image %}
+        <div><img src="{{ post.image.url }}" alt="" width="350px" height="350px"></div>
+    {% endif %}
+
+    <div>{{ post.text }}</div>
+{% endfor %}
 </body>
 </html>

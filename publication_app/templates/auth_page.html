@@ -1,3 +1,4 @@
+{% load menu_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,14 +6,16 @@
     <title>Авторизация</title>
 </head>
 <body>
-    {% if error %}
-        <div>Вы ввели неверный логин или пароль. Повторите попытку.</div>
-    {% endif %}
+<div id="main_menu">{% main_menu %}</div>
 
-    <form method="post" action="/login">
-        {% csrf_token %}
-        {{ auth_form }}
-        <input type="submit" value="Войти">
-    </form>
+{% if error %}
+    <div>Вы ввели неверный логин или пароль. Повторите попытку.</div>
+{% endif %}
+
+<form method="post" action="/login">
+    {% csrf_token %}
+    {{ auth_form }}
+    <input type="submit" value="Войти">
+</form>
 </body>
 </html>
