@@ -2,6 +2,8 @@ from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
 from django.db import models
 
+from media_app.models import Media
+
 
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT, related_name='posts')
@@ -9,7 +11,7 @@ class Post(models.Model):
     title = models.CharField(max_length=256, unique=False, blank=False, null=False)
     text = models.TextField(blank=False, null=False)
     is_public = models.BooleanField(default=True)
-    image = models.ImageField(null=True, blank=True)
+    file = models.ForeignKey(Media, on_delete=models.SET_NULL, null=True, blank=True)
 
 
 class Profile(models.Model):
