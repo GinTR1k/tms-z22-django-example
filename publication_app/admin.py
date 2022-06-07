@@ -10,6 +10,7 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ('id', 'created_at', 'title')
     ordering = ('-created_at', '-id')
     readonly_fields = ('created_at',)
+    search_fields = ('title', 'text')
 
 
 admin.site.unregister(User)
