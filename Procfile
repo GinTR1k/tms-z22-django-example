@@ -1,1 +1,1 @@
-web: gunicorn tms_z22.wsgi
+web: python manage.py migrate && gunicorn tms_z22.wsgi
