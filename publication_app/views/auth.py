@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render
 from django.views import View
 
 from publication_app.forms.auth import AuthForm
+from publication_app.tasks import very_long_task
 
 
 class AuthView(View):
@@ -16,6 +17,8 @@ class AuthView(View):
 
     @staticmethod
     def post(request):
+        very_long_task.delay()
+
         form = AuthForm(request.POST)
         error = False
 

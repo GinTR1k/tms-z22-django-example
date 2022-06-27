@@ -37,16 +37,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'drf_spectacular',
     'rest_framework',
-    # 'django_celery_results',
+    'django_celery_results',
     'publication_app',
     'menu_app',
     'media_app',
     'tags_app',
     'likes_app',
     'comments_app',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -153,3 +155,7 @@ CACHES = {
         }
     }
 }
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
