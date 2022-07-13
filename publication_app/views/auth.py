@@ -17,7 +17,7 @@ class AuthView(View):
 
     @staticmethod
     def post(request):
-        very_long_task.delay()
+        # very_long_task.delay()
 
         form = AuthForm(request.POST)
         error = False
